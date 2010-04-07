@@ -1,0 +1,1 @@
+partial "user", :locals => {:user => @user, :_xml => xml}

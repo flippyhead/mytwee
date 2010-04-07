@@ -1,0 +1,22 @@
+--- 
+defaults:
+  install_options: --include-dependencies --no-ri --no-rdoc --no-test --no-update-sources
+gems: 
+- name: twitter
+  version: >= 0.6.8
+- name: collections
+  version: >= 0.1.4
+- name: ezmobius-redis-rb
+  version: >= 0.0.3
+- name: oauth
+  version: >= 0.3.2
+- name: system_timer
+  version: >= 1.0
+- name: memcache-client
+  version: >= 1.7.2  
+- name: logging
+  version: = 0.9.6
+- name: sinatra
+  version: >= 0.9.1.1
+- name: activesupport
+  version: >= 2.3.2

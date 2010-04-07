@@ -1,0 +1,14 @@
+== TODO ==
+need to store oauth stuff in redis, not in cookies (so auth'd updates can happen in workers)
+setup rufus-scheduler to regularly update existing feeds
+separate redis DSL into it's own library
+setup a queuing system to handle twitter update tasks
+develop better way to deamonize sinatra
+
+
+== SliceHost Setup ==
+rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-3.noarch.rpm
+yum install ruby ruby-devel rubygems gcc git svn -t
+gem install geminstaller
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+service iptables save
