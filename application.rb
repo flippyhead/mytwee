@@ -4,7 +4,7 @@ class Rack::File; MIME_TYPES = Hash.new{|hash, key| Rack::Mime::MIME_TYPES[".#{k
 require 'logger'
 require 'sinatra'
 require 'redis'
-require 'tweetable'
+require 'vendor/gems/tweetable'
 require 'ohm'
 require 'lib/application_helper'
 require 'lib/config'

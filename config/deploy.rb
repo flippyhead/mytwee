@@ -4,7 +4,7 @@
 set :application, "twitterdinks"
 set :scm, :git
 set :git_enable_submodules, 1
-set :repository, "git@github.com:pathable/twitterdinks.git"
+set :repository, "git@github.com:flippyhead/mytwee.git"
 set :branch, "master"
 set :ssh_options, { :forward_agent => true }
 set :stage, :production
@@ -13,7 +13,7 @@ set :use_sudo, false
 set :runner, "deploy"
 set :deploy_to, "/home/sinatra/#{application}"
 set :app_server, :passenger
-set :domain, "twitterdinks.com"
+set :domain, "mytwee.com"
 
 # ========================
 # ROLES
