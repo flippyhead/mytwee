@@ -1,10 +1,11 @@
+require ::File.expand_path('../.bundle/environment', __FILE__)
 require 'rubygems'
 require 'rack/file'
 class Rack::File; MIME_TYPES = Hash.new{|hash, key| Rack::Mime::MIME_TYPES[".#{key}"]}; end
 require 'logger'
 require 'sinatra'
 require 'redis'
-require 'vendor/gems/tweetable'
+require 'tweetable'
 require 'ohm'
 require 'lib/application_helper'
 require 'lib/config'
@@ -12,7 +13,6 @@ require 'builder'
 
 autoload :User, File.join(File.dirname(__FILE__), *%w[lib user.rb])
 autoload :Tidbit, File.join(File.dirname(__FILE__), *%w[lib tidbit.rb])
-
 
 include ApplicationHelper
 
