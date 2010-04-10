@@ -1,11 +1,9 @@
 require 'rubygems'
 require 'sinatra'
  
-Sinatra::Application.default_options.merge!(
-  :run => false,
-  :env => :production,
-  :raise_errors => true
-)
+set :env, :production
+set :raise_errors, true
+disable :run
  
 log = File.new("sinatra.log", "a")
 $stdout.reopen(log)
