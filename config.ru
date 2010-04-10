@@ -1,4 +1,7 @@
 require 'rubygems'
+require "bundler"
+Bundler.setup
+
 require 'sinatra'
  
 Sinatra::Application.default_options.merge!(
