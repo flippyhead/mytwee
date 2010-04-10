@@ -1,7 +1,7 @@
 # ========================
 # CONFIG
 # ========================
-set :application, "twitterdinks"
+set :application, "mytwee"
 set :scm, :git
 set :git_enable_submodules, 1
 set :repository, "git@github.com:flippyhead/mytwee.git"

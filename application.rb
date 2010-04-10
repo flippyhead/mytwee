@@ -1,7 +1,11 @@
-require ::File.expand_path('../.bundle/environment', __FILE__)
+# require ::File.expand_path('../.bundle/environment', __FILE__)
 require 'rubygems'
-require 'rack/file'
-class Rack::File; MIME_TYPES = Hash.new{|hash, key| Rack::Mime::MIME_TYPES[".#{key}"]}; end
+require "bundler"
+
+Bundler.setup
+
+# require 'rack/file'
+# class Rack::File; MIME_TYPES = Hash.new{|hash, key| Rack::Mime::MIME_TYPES[".#{key}"]}; end
 require 'logger'
 require 'sinatra'
 require 'redis'
