@@ -3,6 +3,7 @@ messages ||= nil
 
 _xml.tag!('user', :uid => user.user_id, :screen_name => user.screen_name, :type => user.class.name) do
   _xml.updated_at user.updated_at
+  _xml.profile_image_url user.profile_image_url
   _xml.tag!('friends', :count => user.friends_count)
   _xml.tag!('followers', :count => user.followers_count)
   

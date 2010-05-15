@@ -176,7 +176,7 @@ get "/user/:screen_name" do
   builder :user
 end
 
-post "/user/:screen_name/tidbits" do      
+post "/user/:screen_name/tidbits" do
   authorized?
 
   other_user = User.find(:screen_name => params[:screen_name].downcase).first
