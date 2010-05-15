@@ -171,6 +171,21 @@ get "/user/:screen_name" do
   builder :user
 end
 
+post "/user/:screen_name/tidbits" do      
+  authorized?
+
+  other_user = User.find(:screen_name => params[:screen_name].downcase).first
+  @tidbit = other_user.tidbits.find(:name => params['name']).first
+
+  if @tidbit
+    @tidbit.update(:value => params['value'], :updated_at => Time.now.to_s)
+  else
+    @tidbit = Tidbit.create(:value => params['value'], :name => params['name'], :updated_at => Time.now.to_s, :user => user)
+  end
+
+  builder :tidbit
+end
+
 get '/search/:query' do
   @search = Tweetable::Search.find_or_create(:query, params[:query])  
   @search.update_all

@@ -5,7 +5,7 @@ require 'sinatra'
 require 'rack/test'
 require 'spec'
 require 'spec/autorun'
-require 'spec/interop/test'
+# require 'spec/interop/test'
 
 # set test environment
 set :environment, :test

@@ -1,10 +1,20 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
-describe "MyTwee.com" do
+describe "MyTwee" do
   include Rack::Test::Methods
 
   def app
     @app ||= Sinatra::Application
+  end
+  
+  context 'when posting tidbits' do
+    it "should store tibits on other users" do
+      # controller.stub!(:authorized? => true)
+      # Tweetable::Authorization.stub!(:find => mock('Authorization', :first => '12345'))
+      # mock_user = mock(User, :tidbits => [])
+      # User.should_receive(:find).with(:screen_name => 'flippyhead').and_return([mock_user])
+      # post '/user/flippyhead/tidbits', {'name' => 'value'}      
+    end    
   end
   
   context "when initiating Twitter authorization" do
