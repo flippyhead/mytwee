@@ -87,6 +87,11 @@ get '/auth' do
   redirect oauth.request_token.authorize_url
 end
 
+delete '/auth' do
+  session[:request_token] = nil
+  session[:request_token_secret] = nil
+end
+
 get '/auth/complete' do
   oauth.authorize_from_request(session[:request_token], session[:request_token_secret], params[:oauth_verifier])  
   @authorization = Tweetable::Authorization.find_or_create(:oauth_access_token, oauth.access_token.token)
