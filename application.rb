@@ -109,14 +109,8 @@ end
 post "/tidbits" do
   authorized?
 
-  @tidbit = user.tidbits.find(:name => params['name']).first
-
-  if @tidbit
-    @tidbit.update(:value => params['value'], :updated_at => Time.now.to_s)
-  else
-    @tidbit = Tidbit.create(:value => params['value'], :name => params['name'], :updated_at => Time.now.to_s, :user => user)
-  end
-
+  store_tidbit(user, params)
+  
   builder :tidbit
 end
 
@@ -180,14 +174,8 @@ post "/user/:screen_name/tidbits" do
   authorized?
 
   other_user = User.find(:screen_name => params[:screen_name].downcase).first
-  @tidbit = other_user.tidbits.find(:name => params['name']).first
-
-  if @tidbit
-    @tidbit.update(:value => params['value'], :updated_at => Time.now.to_s)
-  else
-    @tidbit = Tidbit.create(:value => params['value'], :name => params['name'], :updated_at => Time.now.to_s, :user => user)
-  end
-
+  store_tidbit(other_user, params)
+  
   builder :tidbit
 end
 

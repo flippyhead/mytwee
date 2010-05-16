@@ -44,5 +44,17 @@ module ApplicationHelper
     def oauth
       @oauth ||= Twitter::OAuth.new($config[:twitter][:key], $config[:twitter][:secret])
     end
+    
+    def store_tidbit(user, params)
+      tidbits = user.tidbits.find(:name => params['name'])
+      @tidbit = tidbits.first unless tidbits.empty?
+            
+      unless @tidbit.nil?
+        value = params['method'] == 'append' ? @tidbit.value + ",#{params['value']}" : params['value']
+        @tidbit.update(:value => value, :updated_at => Time.now.to_s)
+      else
+        @tidbit = Tidbit.create(:value => params['value'], :name => params['name'], :updated_at => Time.now.to_s, :user => user)
+      end      
+    end
   end  
 end
