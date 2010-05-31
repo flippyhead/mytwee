@@ -13,9 +13,7 @@ xml.tag!('leaders') do
   
   xml.tag!('recent', :count => @recent_tidbits.size) do
     @recent_tidbits.each do |tidbit|
-      xml.tag!('stuff', :updated_at => tidbit.updated_at) do
-        partial "user", :locals => {:user => tidbit.user, :_xml => xml}
-      end
+      partial "user", :locals => {:user => tidbit.user, :_xml => xml}
     end
   end
 end
