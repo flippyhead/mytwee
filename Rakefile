@@ -1,0 +1,1 @@
+require 'vendor/gems/redis-1.0.4/tasks/redis.tasks'
