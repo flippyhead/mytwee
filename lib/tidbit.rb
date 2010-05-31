@@ -4,8 +4,7 @@ class Tidbit < Tweetable::Persistable
   attribute :name
   attribute :value  
   reference :user, User
-  index :name  
-  index :user_id  
+  index :name
   
   def self.search(options = {})
     name = options[:name]
@@ -22,7 +21,7 @@ class Tidbit < Tweetable::Persistable
     assert_present :value
     assert_present :user
     assert_format :name, /^[^\s]+$/
-    assert_unique [:user, :name]
+    assert_unique [:user_id, :name]
   end
   
   def <=>(o)
