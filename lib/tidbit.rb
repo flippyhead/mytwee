@@ -3,8 +3,9 @@ class Tidbit < Tweetable::Persistable
   attribute :updated_at
   attribute :name
   attribute :value  
-  index :name  
   reference :user, User
+  index :name  
+  index :user_id  
   
   def self.search(options = {})
     name = options[:name]
