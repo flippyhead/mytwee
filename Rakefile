@@ -1,1 +1,1 @@
-require 'vendor/gems/redis-1.0.4/tasks/redis.tasks'
+require 'vendor/gems/redis-2.0.1/tasks/redis.tasks'

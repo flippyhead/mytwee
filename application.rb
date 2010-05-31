@@ -11,14 +11,16 @@ require 'sinatra'
 require 'redis'
 require 'tweetable'
 require 'ohm'
-require 'lib/application_helper'
+require 'lib/helpers'
 require 'lib/config'
 require 'builder'
 
 autoload :User, File.join(File.dirname(__FILE__), *%w[lib user.rb])
 autoload :Tidbit, File.join(File.dirname(__FILE__), *%w[lib tidbit.rb])
 
-include ApplicationHelper
+helpers do
+  include Helpers
+end
 
 configure do   
   enable :sessions, :dump_errors
@@ -117,9 +119,10 @@ end
 
 get "/leaders" do
   authorized?
-  @monthly_tidbits = Tidbit.search(:name => 'badgepoints', :ago => 30*24*60*60)
-  @alltime_tidbits = Tidbit.search(:name => 'badgepoints')
-  @recent_tidbits  = Tidbit.search(:name => 'badgepoints', :sort_by => :updated_at).reverse
+  @monthly_tidbits = Tidbit.search(:name => 'badgepoints', :ago => 30*24*60*60).to_a
+  @alltime_tidbits = Tidbit.search(:name => 'badgepoints').to_a
+  @recent_tidbits  = Tidbit.search(:name => 'badgepoints').to_a.sort{|a,b| Time.parse(a.updated_at) <=> Time.parse(b.updated_at)}.reverse
+  
   builder :leaders
 end
 

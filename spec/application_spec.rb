@@ -23,6 +23,21 @@ describe Sinatra::Application do
       # post '/user/flippyhead/tidbits'
     end
   end
+
+  context 'when listing leaders' do
+    it 'should get leaders list' do
+      Tweetable::Authorization.stub!(:find => [true])
+      get '/leaders'
+      last_response.headers["Location"].should be_nil # success
+    end
+    
+    it 'should assign recent leaders' do
+      Tweetable::Authorization.stub!(:find => [true])
+      get '/leaders'
+      last_response.body.should include('recent')
+    end
+    
+  end
   
   context "when initiating Twitter authorization" do
     it "should redirect to Twitter" do

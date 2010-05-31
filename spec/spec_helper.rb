@@ -13,6 +13,10 @@ set :run, false
 set :raise_errors, true
 set :logging, false
 
+Spec::Runner.configure do |config|
+  config.include Helpers
+end
+
 class RedisSpecHelper
   TEST_DB_ID = 15
 
