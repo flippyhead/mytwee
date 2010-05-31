@@ -72,8 +72,14 @@ end
 before do 
   content_type 'application/xml', :charset => 'utf-8'
   Ohm.connect(:db => 2)
+  
+  Tweetable.config({
+    :max_message_count => 200, 
+    :include_on_update => [:info, :messages, :friend_messages],
+    :update_delay => 60
+  })
+
   @authorization = Tweetable::Authorization.find(:oauth_access_token => session[:access_token]).first
-  Tweetable.config(:max_message_count => 200, :include_on_update => [:info, :messages])
   Tweetable.authorize($config[:twitter][:key], $config[:twitter][:secret], @authorization)  
 end
 
@@ -111,9 +117,7 @@ end
 
 post "/tidbits" do
   authorized?
-
   store_tidbit(user, params)
-  
   builder :tidbit
 end
 
@@ -139,6 +143,7 @@ get "/user" do
   
   @messages.compact!
   @messages.sort! unless @messages.nil?
+  @messages.uniq! unless @messages.nil?
   
   filter_messages(@messages, params)
     

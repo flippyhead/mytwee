@@ -21,6 +21,7 @@ class Tidbit < Tweetable::Persistable
     assert_present :value
     assert_present :user
     assert_format :name, /^[^\s]+$/
+    assert_unique [:user, :name]
   end
   
   def <=>(o)

@@ -48,7 +48,7 @@ module Helpers
     tidbits = user.tidbits.find(:name => params['name'])
     @tidbit = tidbits.first unless tidbits.empty?
           
-    unless @tidbit.nil?
+    if !@tidbit.nil?
       value = params['method'] == 'append' ? @tidbit.value + ",#{params['value']}" : params['value']
       @tidbit.update(:value => value, :updated_at => Time.now.to_s)
     else
