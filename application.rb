@@ -71,7 +71,8 @@ before do
   content_type 'application/xml', :charset => 'utf-8'
   Ohm.connect(:db => 2)
   @authorization = Tweetable::Authorization.find(:oauth_access_token => session[:access_token]).first
-  Tweetable.authorize($config[:twitter][:key], $config[:twitter][:secret], @authorization)
+  Tweetable.config(:max_message_count => 200, :include_on_update => [:info, :messages])
+  Tweetable.authorize($config[:twitter][:key], $config[:twitter][:secret], @authorization)  
 end
 
 get '/' do
