@@ -163,7 +163,9 @@ end
 
 get "/user/:screen_name" do    
   @user = User.find_or_create(:screen_name, params[:screen_name].downcase)
-  @user.update_all
+  
+  @user.update_info
+  @user.update_messages  
   
   @messages = @user.messages.sort_by(:message_id, :limit => 200, :order => 'DESC')
   @friend_messages = @user.friend_messages.sort_by(:message_id, :limit => 200, :order => 'DESC')
