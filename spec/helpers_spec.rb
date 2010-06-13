@@ -26,7 +26,7 @@ describe Helpers do
     
     context 'if tidbits exist' do      
       it "should raise error if invalid" do        
-        @tidbit.stub!(:update => true, :valid? => false, :errors => 'errors')
+        @tidbit.stub!(:update => true, :valid? => false, :errors => 'errors', :value => 'value', :user_id => 123)
         @user.stub_chain(:tidbits, :find => [@tidbit])
         lambda{@helpers.store_tidbit(@user, {'value' => 'value', 'name' => 'name'})}.should raise_exception(Helpers::DataInvalidError)
       end

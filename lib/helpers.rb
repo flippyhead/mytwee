@@ -59,7 +59,7 @@ module Helpers
     end
     
     unless @tidbit.valid?
-      raise DataInvalidError.new("Tidbit could not be saved: #{@tidbit.errors}")
+      raise DataInvalidError.new("Tidbit could not be saved, #{@tidbit.value} / #{@tidbit.user_id}: #{@tidbit.errors.inspect}")
     end
   end
 end 
