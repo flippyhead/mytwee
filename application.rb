@@ -65,7 +65,13 @@ end
 
 error Twitter::InformTwitter do 
   @type = '500 Twitter Internal Error'
-  @message = "Twitter has an internal error, please try again in a few minutes"
+  @message = "Twitter has an internal error, please try again in a few minutes."
+  builder :error
+end
+
+error Helpers::DataInvalidError do 
+  @type = '406 Invalid Content'
+  @message = "Data was rejected MyTwee as invalid."
   builder :error
 end
 

@@ -37,6 +37,7 @@ namespace :deploy do
   task :after_update_code  do
     bundler.bundle_new_release
     run "chown -R apache #{release_path}"
+    run "chmod 666 #{release_path}/views/flash.erb"
   end
   
   desc "Restart Application"

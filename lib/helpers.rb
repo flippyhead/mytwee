@@ -1,4 +1,7 @@
 module Helpers
+  
+  class DataInvalidError < StandardError; end
+  
   def filter_messages(messages, params = {})
     messages.reject! do |m| 
       (m.nil?) ||
@@ -53,6 +56,10 @@ module Helpers
       @tidbit.update(:value => value, :updated_at => Time.now.to_s)
     else
       @tidbit = Tidbit.create(:value => params['value'], :name => params['name'], :updated_at => Time.now.to_s, :user => user)
-    end      
+    end
+    
+    unless @tidbit.valid?
+      raise DataInvalidError.new("Tidbit could not be saved: #{@tidbit.errors}")
+    end
   end
 end 
