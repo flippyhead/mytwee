@@ -1,12 +1,15 @@
 #!/usr/bin/env ruby
-libs =  " -r irb/completion"
-libs << " -r console_app"
-libs << " -r rubygems"
-libs << " -r ohm"
-libs << " -r tweetable"
-libs << " -r lib/user"
-libs << " -r lib/tidbit"
 
-# Ohm.connect(:db => 2)
+require 'rubygems'
+require 'bundler'
+require 'irb'
 
-exec "irb #{libs} --simple-prompt"
+Bundler.setup
+Bundler.require
+
+autoload :User, File.join(File.dirname(__FILE__), *%w[.. lib user.rb])
+autoload :Tidbit, File.join(File.dirname(__FILE__), *%w[.. lib tidbit.rb])
+
+Ohm.connect(:db => 2)
+
+IRB.start
