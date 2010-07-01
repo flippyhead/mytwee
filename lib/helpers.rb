@@ -32,8 +32,12 @@ module Helpers
     end
   end
 
-  def authorized?
-    redirect '/auth' unless @authorization
+  def authorized?    
+    if @authorization
+      puts "**** AUTHORIZED: #{@authorization.user_id}"
+    else
+      redirect '/auth' 
+    end
   end
   
   def user
