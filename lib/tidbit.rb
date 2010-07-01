@@ -23,8 +23,4 @@ class Tidbit < Tweetable::Persistable
     assert_format :name, /^[^\s]+$/
     assert_unique [:user_id, :name]
   end
-  
-  def <=>(o)
-    self.value <=> o.value
-  end
 end

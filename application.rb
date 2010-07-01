@@ -86,7 +86,7 @@ before do
   })
 
   @authorization = Tweetable::Authorization.find(:oauth_access_token => session[:access_token]).first
-  Tweetable.authorize($config[:twitter][:key], $config[:twitter][:secret], @authorization)  
+  Tweetable.authorize($config[:twitter][:key], $config[:twitter][:secret], @authorization)    
 end
 
 get '/' do

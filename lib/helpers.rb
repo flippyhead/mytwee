@@ -1,3 +1,5 @@
+require 'thread'
+
 module Helpers
   
   class DataInvalidError < StandardError; end
@@ -47,19 +49,20 @@ module Helpers
     @oauth ||= Twitter::OAuth.new($config[:twitter][:key], $config[:twitter][:secret])
   end
   
-  def store_tidbit(user, params)
-    tidbits = user.tidbits.find(:name => params['name'])
+  def store_tidbit(user, params)    
+    tidbits = Tidbit.find(:name => params['name'], :user_id => user.id)
     @tidbit = tidbits.first unless tidbits.empty?
-          
+
     if !@tidbit.nil?
       value = params['method'] == 'append' ? @tidbit.value + ",#{params['value']}" : params['value']
       @tidbit.update(:value => value, :updated_at => Time.now.to_s)
-    else
+    else      
       @tidbit = Tidbit.create(:value => params['value'], :name => params['name'], :updated_at => Time.now.to_s, :user => user)
+      puts "NEW: #{tidbits.inspect} / #{params.inspect} / #{@tidbit.id} / #{user.tidbits.inspect}"
     end
-    
+
     unless @tidbit.valid?
-      raise DataInvalidError.new("Tidbit could not be saved, #{@tidbit.value} / #{@tidbit.user_id}: #{@tidbit.errors.inspect}")
-    end
+      raise DataInvalidError.new("Tidbit could not be saved, #{@tidbit.name} / #{@tidbit.user_id}: #{@tidbit.errors.inspect}")
+    end        
   end
 end 
