@@ -23,7 +23,7 @@ helpers do
 end
 
 configure do   
-  enable :sessions
+  enable :sessions, :lock
   disable :clean_trace, :raise_errors, :dump_errors
 end
 
@@ -171,7 +171,7 @@ get "/user/:screen_name" do
   @user = User.find_or_create(:screen_name, params[:screen_name].downcase)
   
   @user.update_info
-  @user.update_messages
+  @user.update_messages  
   
   @messages = @user.messages.sort_by(:message_id, :limit => 200, :order => 'DESC')
   @friend_messages = @user.friend_messages.sort_by(:message_id, :limit => 200, :order => 'DESC')
