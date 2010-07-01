@@ -1,0 +1,83 @@
+--- 
+dependencies: 
+  tweetable: 
+    group: 
+    - :default
+    version: ">= 0"
+  oauth: 
+    group: 
+    - :default
+    version: = 0.4.0
+  rspec: 
+    group: 
+    - :development
+    version: ">= 0"
+  rack: 
+    group: 
+    - :default
+    version: ">= 0"
+  sinatra: 
+    group: 
+    - :default
+    version: ">= 0"
+  rack-test: 
+    group: 
+    - :development
+    version: ">= 0"
+  logging: 
+    group: 
+    - :default
+    version: ">= 0"
+  ohm: 
+    group: 
+    - :default
+    version: ">= 0"
+  redis: 
+    group: 
+    - :default
+    version: ">= 0"
+  builder: 
+    group: 
+    - :default
+    version: ">= 0"
+  twitter: 
+    group: 
+    - :default
+    version: ">= 0"
+specs: 
+- builder: 
+    version: 2.1.2
+- crack: 
+    version: 0.1.6
+- hashie: 
+    version: 0.2.1
+- httparty: 
+    version: 0.5.2
+- little-plugger: 
+    version: 1.1.2
+- logging: 
+    version: 1.4.3
+- oauth: 
+    version: 0.4.0
+- redis: 
+    version: 2.0.3
+- ohm: 
+    version: 0.0.35
+- rack: 
+    version: 1.2.1
+- rack-test: 
+    version: 0.5.4
+- rspec: 
+    version: 1.3.0
+- sinatra: 
+    version: "1.0"
+- yajl-ruby: 
+    version: 0.7.6
+- twitter: 
+    version: 0.9.7
+- tweetable: 
+    version: 0.1.10
+hash: b05e72463a5f71d3ec34c5ee5f36054debaab4f3
+sources: 
+- Rubygems: 
+    uri: http://gemcutter.org
