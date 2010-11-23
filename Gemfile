@@ -1,6 +1,6 @@
 source :gemcutter
 gem 'sinatra'
-gem 'rack'
+gem 'rack', "1.1.0"
 gem 'tweetable'
 gem 'redis'
 gem 'ohm', '0.0.35'
