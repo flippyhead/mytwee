@@ -3,14 +3,18 @@ gem 'sinatra'
 gem 'rack'
 gem 'tweetable'
 gem 'redis'
-gem 'ohm'
+gem 'ohm', '0.0.35'
 gem 'builder'
 gem 'logging'
-gem 'twitter'
+gem 'twitter', '0.9.5'
 gem 'oauth', '0.4.0'
 
 group :development do
-  gem 'tweetable', :path => '/Users/peterbrown/Development/tweetable/'
-	gem 'rspec'
-	gem 'rack-test'	
+  # gem 'tweetable', :path => '/Users/peterbrown/Development/tweetable/'  
+end
+
+group :test do
+  gem 'fakeweb'
+  gem 'rack-test'	
+	gem 'rspec'	
 end

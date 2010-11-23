@@ -54,7 +54,7 @@ module Helpers
   end
   
   def store_tidbit(user, params)    
-    tidbits = Tidbit.find(:name => params['name'], :user_id => user.id)
+    tidbits = user.tidbits.find(:name => params['name']) #Tidbit.find(:name => params['name'], :user_id => user.id)
     @tidbit = tidbits.first unless tidbits.empty?
 
     if !@tidbit.nil?
@@ -62,7 +62,7 @@ module Helpers
       @tidbit.update(:value => value, :updated_at => Time.now.to_s)
     else      
       @tidbit = Tidbit.create(:value => params['value'], :name => params['name'], :updated_at => Time.now.to_s, :user => user)
-      puts "NEW: #{tidbits.inspect} / #{params.inspect} / #{@tidbit.id} / #{user.tidbits.inspect}"
+      # puts "NEW: #{tidbits.inspect} / #{params.inspect} / #{@tidbit.id} / #{user.tidbits.inspect}"
     end
 
     unless @tidbit.valid?

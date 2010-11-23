@@ -77,7 +77,7 @@ before do
   })
 
   @authorization = Tweetable::Authorization.find(:oauth_access_token => session[:access_token]).first
-  Tweetable.authorize($config[:twitter][:key], $config[:twitter][:secret], @authorization)    
+  Tweetable.authorize($config[:twitter][:key], $config[:twitter][:secret], @authorization)
 end
 
 get '/' do
@@ -112,6 +112,12 @@ get "/status" do
   builder :status
 end
 
+post "/status" do
+  authorized?
+  Tweetable::Message.create_from_status(params[:text], @authorization.client)
+  head :ok
+end
+
 post "/tidbits" do
   authorized?
   store_tidbit(user, params)
@@ -129,7 +135,7 @@ end
 
 get "/user" do
   authorized?
-  
+
   @user = User.find_or_create(:user_id, @authorization.user_id)
   @user.update_all
   @user.update_friend_messages

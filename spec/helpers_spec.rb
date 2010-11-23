@@ -5,14 +5,15 @@ class HelpersInstance
 end
 
 describe Helpers do  
-  before(:all) do
+  before do
+    RedisSpecHelper.reset
     @helpers = HelpersInstance.new
-    @user = mock(User)
+    @user = User.create(:screen_name => 'screen_name', :user_id => '123')
   end
   
   context 'when storing tidbits on a user' do
     before do
-      @tidbit = mock(Tidbit, :name => 'name')
+      @tidbit = Tidbit.create(:user => @user, :name => 'name', :value => 'value')#mock(Tidbit, :name => 'name', :id => 1)
     end
     
     context 'if tidbits is empty' do      

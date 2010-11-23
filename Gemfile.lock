@@ -1,87 +1,58 @@
---- 
-dependencies: 
-  tweetable: 
-    group: 
-    - :development
-    version: ">= 0"
-  oauth: 
-    group: 
-    - :default
-    version: = 0.4.0
-  rspec: 
-    group: 
-    - :development
-    version: ">= 0"
-  rack: 
-    group: 
-    - :default
-    version: ">= 0"
-  sinatra: 
-    group: 
-    - :default
-    version: ">= 0"
-  rack-test: 
-    group: 
-    - :development
-    version: ">= 0"
-  builder: 
-    group: 
-    - :default
-    version: ">= 0"
-  redis: 
-    group: 
-    - :default
-    version: ">= 0"
-  ohm: 
-    group: 
-    - :default
-    version: ">= 0"
-  logging: 
-    group: 
-    - :default
-    version: ">= 0"
-  twitter: 
-    group: 
-    - :default
-    version: ">= 0"
-specs: 
-- builder: 
-    version: 2.1.2
-- crack: 
-    version: 0.1.6
-- hashie: 
-    version: 0.2.1
-- httparty: 
-    version: 0.5.2
-- little-plugger: 
-    version: 1.1.2
-- logging: 
-    version: 1.4.3
-- oauth: 
-    version: 0.4.0
-- redis: 
-    version: 2.0.3
-- ohm: 
-    version: 0.0.35
-- rack: 
-    version: 1.2.1
-- rack-test: 
-    version: 0.5.4
-- rspec: 
-    version: 1.3.0
-- sinatra: 
-    version: "1.0"
-- yajl-ruby: 
-    version: 0.7.6
-- twitter: 
-    version: 0.9.7
-- tweetable: 
-    version: 0.1.10
-    source: 0
-hash: acbc34148db668e74a41d27e275efe1c6ca2016f
-sources: 
-- Path: 
-    path: !ruby/object:Pathname 
-      path: /Users/peterbrown/Development/tweetable/
-- Rubygems: 
-    uri: http://gemcutter.org
+GEM
+  remote: http://rubygems.org/
+  specs:
+    builder (3.0.0)
+    crack (0.1.6)
+    diff-lcs (1.1.2)
+    fakeweb (1.3.0)
+    hashie (0.2.2)
+    httparty (0.5.2)
+      crack (= 0.1.6)
+    little-plugger (1.1.2)
+    logging (1.4.3)
+      little-plugger (>= 1.1.2)
+    oauth (0.4.0)
+    ohm (0.0.35)
+      redis (>= 1.0.4)
+    rack (1.2.1)
+    rack-test (0.5.6)
+      rack (>= 1.0)
+    redis (2.1.1)
+    rspec (2.1.0)
+      rspec-core (~> 2.1.0)
+      rspec-expectations (~> 2.1.0)
+      rspec-mocks (~> 2.1.0)
+    rspec-core (2.1.0)
+    rspec-expectations (2.1.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.1.0)
+    sinatra (1.1.0)
+      rack (~> 1.1)
+      tilt (~> 1.1)
+    tilt (1.1)
+    tweetable (0.1.13)
+      logging
+      twitter
+    twitter (0.9.5)
+      hashie (~> 0.2.0)
+      httparty (~> 0.5.0)
+      oauth (>= 0.3.5)
+      yajl-ruby (~> 0.7.0)
+    yajl-ruby (0.7.8)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  builder
+  fakeweb
+  logging
+  oauth (= 0.4.0)
+  ohm (= 0.0.35)
+  rack
+  rack-test
+  redis
+  rspec
+  sinatra
+  tweetable
+  twitter (= 0.9.5)
