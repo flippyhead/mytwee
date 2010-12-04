@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    SystemTimer (1.2)
     builder (3.0.0)
     crack (0.1.6)
     diff-lcs (1.1.2)
@@ -42,6 +43,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  SystemTimer (= 1.2)
   builder
   fakeweb
   logging
