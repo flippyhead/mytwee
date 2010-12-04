@@ -60,6 +60,12 @@ error Twitter::InformTwitter do
   builder :error
 end
 
+error Twitter::General do
+  @type = "Twitter General Error"
+  @message = "Twitter generated an general user error."
+  builder :error  
+end
+
 error Helpers::DataInvalidError do 
   @type = '406 Invalid Content'
   @message = "Data was rejected MyTwee as invalid."
@@ -115,7 +121,9 @@ end
 post "/status" do
   authorized?
   Tweetable::Message.create_from_status(params[:text], @authorization.client)
-  head :ok
+  
+  @message = "Status text successfully sent!"  
+  builder :success
 end
 
 post "/tidbits" do

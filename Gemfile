@@ -3,7 +3,7 @@ gem 'sinatra', "1.0"
 gem 'rack', "1.1.0"
 gem 'tweetable'
 gem 'redis'
-gem 'ohm', '0.0.35'
+gem 'ohm', '0.0.38'
 gem 'builder'
 gem 'logging'
 gem 'twitter', '0.9.5'
