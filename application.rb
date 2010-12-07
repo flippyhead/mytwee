@@ -146,7 +146,6 @@ get "/user" do
 
   @user = User.find_or_create(:user_id, @authorization.user_id)
   @user.update_all
-  @user.update_friend_messages
   
   @messages = @user.messages.sort_by(:message_id, :limit => 200, :order => 'DESC')  
   @friend_messages = @user.friend_messages.sort_by(:message_id, :limit => 200, :order => 'DESC')
