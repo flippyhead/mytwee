@@ -103,6 +103,8 @@ get '/deauth' do
   @authorization.delete
   session[:request_token] = nil
   session[:request_token_secret] = nil
+
+  redirect "/"
 end
 
 get '/auth/complete' do
