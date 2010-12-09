@@ -99,7 +99,8 @@ get '/auth' do
   redirect oauth.request_token.authorize_url
 end
 
-delete '/auth' do
+get '/deauth' do
+  @authorization.delete
   session[:request_token] = nil
   session[:request_token_secret] = nil
 end
