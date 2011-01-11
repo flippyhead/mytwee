@@ -6,6 +6,8 @@ Bundler.require
 require 'lib/helpers'
 require 'lib/config'
 
+require 'tweetable'
+
 autoload :User, File.join(File.dirname(__FILE__), *%w[lib user.rb])
 autoload :Tidbit, File.join(File.dirname(__FILE__), *%w[lib tidbit.rb])
 
@@ -111,6 +113,9 @@ get '/auth/complete' do
   oauth.authorize_from_request(session[:request_token], session[:request_token_secret], params[:oauth_verifier])  
   @authorization = Tweetable::Authorization.find_or_create(:oauth_access_token, oauth.access_token.token)
   @authorization.update(:oauth_access_secret => oauth.access_token.secret)
+  
+  puts "**** #{@authorization.inspect}"
+  
   session[:access_token] = @authorization.oauth_access_token
   
   redirect "/"
