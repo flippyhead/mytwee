@@ -10,6 +10,7 @@ gem 'twitter', '0.9.12'
 gem 'oauth', '0.4.3'
 gem 'SystemTimer', '1.2'
 gem 'tweetable', '0.1.14' 
+gem 'yajl-ruby'
 
 group :production do
   # gem 'tweetable'

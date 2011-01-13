@@ -153,6 +153,9 @@ get "/user" do
   authorized?
 
   @user = User.find_or_create(:user_id, @authorization.user_id)
+  
+  puts "**** #{@user.inspect}"
+  
   @user.update_all
   
   @messages = @user.messages.sort_by(:message_id, :limit => 200, :order => 'DESC')  
