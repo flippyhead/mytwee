@@ -121,17 +121,15 @@ get '/auth/complete' do
   redirect "/"
 end
 
-get "/status" do
+get "/stats" do
   @status = Tweetable.client.status    
   builder :status
 end
 
 post "/status" do
   authorized?
-  Tweetable::Message.create_from_status(params[:text], @authorization.client)
-  
-  @message = "Status text successfully sent!"  
-  builder :success
+  @message = Tweetable::Message.create_from_status(params[:text], @authorization.client)
+  builder :success_message
 end
 
 post "/tidbits" do

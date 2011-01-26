@@ -1,0 +1,1 @@
+partial "message", :locals => {:message => @message, :_xml => xml}
