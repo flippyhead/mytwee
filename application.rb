@@ -128,8 +128,11 @@ end
 
 post "/status" do
   authorized?
-  @message = Tweetable::Message.create_from_status(params[:text], @authorization.client)
-  builder :success_message
+  
+  @user = User.find_or_create(:user_id, @authorization.user_id)
+  message = Tweetable::Message.create_from_status(params[:text], @authorization.client)
+  @user.messagez = [message]
+  builder :user
 end
 
 post "/tidbits" do
