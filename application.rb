@@ -102,7 +102,7 @@ get '/auth' do
 end
 
 get '/deauth' do
-  @authorization.delete
+  @authorization.delete unless @authorization.nil?
   session[:request_token] = nil
   session[:request_token_secret] = nil
 
@@ -114,7 +114,7 @@ get '/auth/complete' do
   @authorization = Tweetable::Authorization.find_or_create(:oauth_access_token, oauth.access_token.token)
   @authorization.update(:oauth_access_secret => oauth.access_token.secret)
   
-  puts "**** #{@authorization.inspect}"
+  # puts "**** #{@authorization.inspect}"
   
   session[:access_token] = @authorization.oauth_access_token
   
@@ -155,7 +155,7 @@ get "/user" do
 
   @user = User.find_or_create(:user_id, @authorization.user_id)
   
-  puts "**** #{@user.inspect}"
+  # puts "**** #{@user.inspect}"
   
   @user.update_all
   
